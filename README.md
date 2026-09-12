@@ -24,9 +24,9 @@
 ## Código:
 - [x] Adicionar classes
 	- [x] Adicionar chaves principais
-	- [ ] Adicionar chaves estrangeiras
-	- [ ] Adicionar  no banco de dados
-- [ ] Adicionar Controllers
+	- [x] Adicionar chaves estrangeiras
+	- [ ] Adicionar no banco de dados
+- [x] Adicionar Controllers
 - [ ] Refatorar codigo
 ## Miscelaneos (ou coisas adicionais que provavelmente não serão adicionadas)
 
