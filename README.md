@@ -25,11 +25,11 @@
 - [x] Adicionar classes
 	- [x] Adicionar chaves principais
 	- [ ] Adicionar chaves estrangeiras
-	- [ ] Adicionar  no banco de dados
-- [ ] Adicionar Controllers
+	- [ ] Adicionar no banco de dados
+- [x] Adicionar Controllers
 - [ ] Refatorar codigo
-## Miscelaneos (ou coisas adicionais que provavelmente não serão adicionadas)
 
+## Miscelaneos (ou coisas adicionais que provavelmente não serão adicionadas)
 - [ ] Classe para outros funcionarios
 - [ ] Sistema de correção e avaliação de atividade
 - [ ] Sistema de notas automaticas
