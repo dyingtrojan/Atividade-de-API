@@ -8,10 +8,13 @@ namespace Atividade_API.Models
         public int Id { get; set; }
         public float nota { get; set; }
 
-        [ForeignKey("Id")]
+        public int DisciplinaID { get; set; }
+        public int AlunoID { get; set; }
+
+        [ForeignKey("DisciplinaID")]
         public Disciplina disciplina { get; set; }
 
-        [ForeignKey("Id")]
+        [ForeignKey("AlunoID")]
         public Aluno aluno { get; set; } 
     }
 }

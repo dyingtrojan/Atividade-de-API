@@ -9,13 +9,17 @@ namespace Atividade_API.Models
         public string nome { get; set; }
         public string descricao { get; set; }
 
-        [ForeignKey("Id")]
+        public int TurmaID { get; set; }
+        public int ProfessorID { get; set; }
+        public int DisciplinaID { get; set; }
+
+        [ForeignKey("TurmaID")]
         public Turma turma { get; set; }
 
-        [ForeignKey("Id")]
+        [ForeignKey("ProfessorID")]
         public Professor professor { get; set; }
 
-        [ForeignKey("Id")]
+        [ForeignKey("DisciplinaID")]
         public Disciplina disciplina { get; set; }
     }
 }

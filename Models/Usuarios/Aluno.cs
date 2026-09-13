@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using Microsoft.EntityFrameworkCore;
 
 namespace Atividade_API.Models.Usuarios
@@ -8,7 +9,9 @@ namespace Atividade_API.Models.Usuarios
         public int matricula { get; set; }
         public string status { get; set; }
 
-        [ForeignKey("Id")]
-        public Turma turma { get; set; }
+        public int? TurmaId { get; set; }
+        [ForeignKey("TurmaId")]
+        [ValidateNever]
+        public Turma? turma { get; set; }
     }
 }
