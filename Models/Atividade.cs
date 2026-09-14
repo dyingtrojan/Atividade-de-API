@@ -15,16 +15,12 @@ namespace Atividade_API.Models
         public int? DisciplinaID { get; set; }
 
         [ForeignKey("TurmaID")]
-        [ValidateNever]
-        
         public Turma? turma { get; set; }
 
         [ForeignKey("ProfessorID")]
-        [ValidateNever]
         public Professor? professor { get; set; }
 
         [ForeignKey("DisciplinaID")]
-        [ValidateNever]
         public Disciplina? disciplina { get; set; }
     }
 }

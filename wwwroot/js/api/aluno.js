@@ -11,7 +11,7 @@ async function atualizarTurmas() {
     const turmas = await response.json()
     const turmaSelect = document.getElementById("turma")
 
-    for (const turma of turmas){
+    for (const turma of turmas) {
         turmaSelect.innerHTML += `
         <option value="${turma.id}">${turma.id} | ${turma.nomeTurma} (${turma.turno}) | ${turma.anoLetivo}</option>
         `
@@ -24,7 +24,7 @@ async function alterarTabela() {
 
     tabela.innerHTML = ``
 
-    for (const aluno of alunos){
+    for (const aluno of alunos) {
         tabela.innerHTML += `
         <tr>
             <td>${aluno.id}</td>
@@ -60,7 +60,7 @@ async function adicionarAluno() {
         status: "Matriculado",
         turmaId: parseInt(turmaId)
     }
-    const resposta = await fetch(`${API_URL}`,{
+    const resposta = await fetch(`${API_URL}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -73,10 +73,10 @@ async function adicionarAluno() {
 
 async function deletarAluno(id) {
     const confirmacao = confirm("Tem certeza que quer apagar o aluno?")
-    if (!confirmacao){
+    if (!confirmacao) {
         return
     }
-    const response = await fetch(`${API_URL}/${id}`,{
+    const response = await fetch(`${API_URL}/${id}`, {
         method: "DELETE",
         headers: {
             'Content-Type': 'application/json'
