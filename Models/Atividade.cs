@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using Atividade_API.Models.Usuarios;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace Atividade_API.Models
 {
@@ -9,17 +10,21 @@ namespace Atividade_API.Models
         public string nome { get; set; }
         public string descricao { get; set; }
 
-        public int TurmaID { get; set; }
-        public int ProfessorID { get; set; }
-        public int DisciplinaID { get; set; }
+        public int? TurmaID { get; set; }
+        public int? ProfessorID { get; set; }
+        public int? DisciplinaID { get; set; }
 
         [ForeignKey("TurmaID")]
-        public Turma turma { get; set; }
+        [ValidateNever]
+        
+        public Turma? turma { get; set; }
 
         [ForeignKey("ProfessorID")]
-        public Professor professor { get; set; }
+        [ValidateNever]
+        public Professor? professor { get; set; }
 
         [ForeignKey("DisciplinaID")]
-        public Disciplina disciplina { get; set; }
+        [ValidateNever]
+        public Disciplina? disciplina { get; set; }
     }
 }

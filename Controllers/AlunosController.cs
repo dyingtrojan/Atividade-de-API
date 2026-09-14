@@ -29,7 +29,7 @@ namespace Atividade_API.Controllers
           {
               return NotFound();
           }
-            return await _context.Aluno.ToListAsync();
+            return await _context.Aluno.Include(a => a.turma).ToListAsync();
         }
 
         // GET: api/Alunos/5

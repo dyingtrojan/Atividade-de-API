@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alunos</title>
+    <link rel="stylesheet" href="../../css/site.css">
+    <script src="../../js/api/aluno.js" defer></script>
+</head>
+<body onload="alterarTabela(); atualizarTurmas()">
+    <header>
+        <button onclick="javascript:history.back()">← Voltar</button>
+    </header>
+    <br>
+    <main>
+        <div>
+            <h1>Adicionar Aluno</h1>
+            <label for="nome">Nome</label>
+            <input type="text" name="nome" id="nome">
+            <br>
+            <label for="idade">Idade</label>
+            <input type="number" name="idade" id="idade">
+            <br>
+            <label for="cpf">CPF</label>
+            <input type="text" name="cpf" id="cpf">
+            <br>
+            <label for="email">E-mail</label>
+            <input type="email" name="email" id="email">
+            <br>
+            <label for="turma">Turma</label>
+            <select name="turma" id="turma">
+                <option value="null" disabled selected>Selecione a turma</option>
+                <option value="null">Nenhuma turma.</option>
+            </select>
+            <br>
+            <button class="cadastrar" onclick="adicionarAluno()">Adicionar</button>
+        </div>
+        <br>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Matricula</th>
+                        <th>Nome</th>
+                        <th>Idade</th>
+                        <th>CPF</th>
+                        <th>E-mail</th>
+                        <th>Status</th>
+                        <th>Turma</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="tabela-alunos">
+    
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+</html>

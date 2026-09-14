@@ -4,6 +4,7 @@ using Atividade_API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Atividade_API.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260914105906_AddCargoColumn")]
+    partial class AddCargoColumn
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,13 +33,13 @@ namespace Atividade_API.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("DisciplinaID")
+                    b.Property<int>("DisciplinaID")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ProfessorID")
+                    b.Property<int>("ProfessorID")
                         .HasColumnType("int");
 
-                    b.Property<int?>("TurmaID")
+                    b.Property<int>("TurmaID")
                         .HasColumnType("int");
 
                     b.Property<string>("descricao")
@@ -92,13 +95,14 @@ namespace Atividade_API.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("CargaHoraria")
+                    b.Property<int>("CargaHoraria")
                         .HasColumnType("int");
 
                     b.Property<int?>("ProfessorId")
                         .HasColumnType("int");
 
                     b.Property<string>("nomeDisciplina")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -136,10 +140,6 @@ namespace Atividade_API.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("nome")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("tipoPessoa")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -244,15 +244,21 @@ namespace Atividade_API.Migrations
                 {
                     b.HasOne("Atividade_API.Models.Disciplina", "disciplina")
                         .WithMany()
-                        .HasForeignKey("DisciplinaID");
+                        .HasForeignKey("DisciplinaID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Atividade_API.Models.Usuarios.Professor", "professor")
                         .WithMany()
-                        .HasForeignKey("ProfessorID");
+                        .HasForeignKey("ProfessorID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Atividade_API.Models.Turma", "turma")
                         .WithMany()
-                        .HasForeignKey("TurmaID");
+                        .HasForeignKey("TurmaID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("disciplina");
 

@@ -9,16 +9,24 @@ header{
 }
 
 a{
-    text-decoration: none;
+    text-decoration: underline;
     color:slategray;
+    
 }
-
+.delete{
+    background-color: white;
+}
+.delete:hover{
+    background-color:crimson;
+}
 .right{
-    align-items: right;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .left{
-    align-items: left;
+    display: flex;
+    justify-content: flex-start;
 }
 
 .center{
@@ -26,13 +34,21 @@ a{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    transition: box-shadow 0.1s ease-in-out 0.1s;
+}
+
+div{
     border: 3px solid #000000;
     border-radius: 15px;
+    padding: 10px;
 }
+
+
 .login{
     padding: 15px;
 }
-.login input, select{
+
+input, select{
     margin-bottom: 10px;
     height: 30px;
     width: 600px;
@@ -42,7 +58,7 @@ a{
     transition: box-shadow 0.1s ease-in-out 0.1s;
 }
 
-.login input:focus, .login input:hover, select:focus, select:hover{
+input:focus, .login input:hover, select:focus, select:hover{
     margin-bottom: 10px;
     height: 30px;
     width: 600px;
@@ -72,12 +88,12 @@ button:hover{
 
 .cadastrar{
     background-color:white;
-    transition: background-color 0.1s ease-in-out 0.1s;
+    transition: background-color 0.1s ease-in-out 0.1s, box-shadow 0.1s ease-in-out 0.1s;
 }
 
 .cadastrar:hover{
     background-color:greenyellow;
-    transition: background-color 0.1s ease-in-out 0.1s;
+    transition: background-color 0.1s ease-in-out 0.1s, box-shadow 0.1s ease-in-out 0.1s;
 }
 
 #idade{

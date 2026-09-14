@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alunos</title>
+    <link rel="stylesheet" href="../../css/site.css">
+    <script src="../../js/api/disciplina.js" defer></script>
+</head>
+<body onload="alterarTabela()">
+    <header>
+        <button onclick="javascript:history.back()">← Voltar</button>
+    </header>
+    <br>
+    <main>
+        <div>
+            <h1>Adicionar Disciplina</h1>
+            <label for="nomeDisciplina">Nome</label>
+            <input type="text" name="nomeDisciplina" id="nomeDisciplina">
+            <br>
+            <label for="CargaHoraria">Carga Horaria</label>
+            <input type="number" name="CargaHoraria" id="CargaHoraria">
+            <button class="cadastrar" onclick="adicionarDisciplina()">Adicionar</button>
+        </div>
+        <br>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome da Disciplina</th>
+                        <th>Carga Horária</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="tabela-disciplinas">
+    
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+</html>

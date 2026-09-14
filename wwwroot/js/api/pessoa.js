@@ -6,38 +6,22 @@ async function adicionarPessoa() {
     const idade = document.getElementById("idade").value
     const email = document.getElementById("email").value
     const cpf = document.getElementById("cpf").value
-    const senha = document.getElementById("senha").value
     const tipoPessoa = document.getElementById("tipoUsuario").value
 
-    switch (tipoPessoa) {
-        case "Aluno":
-            const payload = {
-                nome: nome,
-                idade: idade,
-                email: email,
-                cpf: cpf,
-                hashSenha: senha,
-                tipoPessoa: tipoPessoa,
-                status: "Matriculado",
-                turmaId: null
-            }
-            const resposta = await fetch(`${API_URL}/Alunos`,{
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(payload)
-            }
-            )
-            break;
-    
+    switch (tipoPessoa) {    
         case "Professor":
             try{
+                const formacoes = document.getElementById("formacoes").value
+                const cargo = document.getElementById("cargo").value
+
                 const payload = {
                     nome: nome,
                     idade: idade,
                     email: email,
-                    hashSenha: senha,
+                    cpf: cpf,
+                    cargo: cargo,
+                    formacoes: formacoes,
+                    hashSenha: "12345678",
                     tipoPessoa: tipoPessoa
                 }
                 const resposta = await fetch(`${API_URL}/Professores`,{
@@ -59,7 +43,8 @@ async function adicionarPessoa() {
                     nome: nome,
                     idade: idade,
                     email: email,
-                    hashSenha: senha,
+                    cpf: cpf,
+                    hashSenha: "12345678",
                     tipoPessoa: tipoPessoa
                 }
                 const resposta = await fetch(`${API_URL}/Administradores`,{
@@ -77,14 +62,67 @@ async function adicionarPessoa() {
     }
 }
 
-async function gerarHashSenha(senha) {
-    const encoder = new TextEncoder();
-    const data = encoder.encode(senha);
+async function procurarPessoas() {
+    const result = await fetch(`${API_URL}/Pessoas`)
+    const pessoas  = await result.json()
+    return pessoas 
+}
+
+async function alterarTabela() {
+    var tabela = document.getElementById("tabela-pessoas")
+    const pessoas = await procurarPessoas()
+
+    tabela.innerHTML = ``
+
+    for (const pessoa of pessoas){
+        tabela.innerHTML += `
+        <tr>
+            <td>${pessoa.id}</td>
+            <td>${pessoa.nome}</td>
+            <td>${pessoa.idade}</td>
+            <td>${pessoa.cpf}</td>
+            <td>${pessoa.email}</td>
+            <td>${pessoa.tipoPessoa}</td>
+            <th><a>Editar</a></th>
+            <th><a>Detalhes</a></th>
+            <th><button class="delete" onclick=deletarPessoa(${pessoa.id})>Delete</button></th>
+        </tr>
+        `
+    }
+}
+
+async function deletarPessoa(id) {
+    const confirmacao = confirm("Tem certeza que quer apagar o usuario?")
+    if (!confirmacao){
+        return
+    }
+    const response = await fetch(`${API_URL}/Pessoas/${id}`,{
+        method: "DELETE",
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+    )
+    alterarTabela()
+}
+
+function alterarDiv(){
+    const tipoPessoa = document.getElementById("tipoUsuario").value
+    const div_professor = document.getElementById("professor-div")
+    const div_administrador = document.getElementById("administrador-div")
+    switch (tipoPessoa) {
+        case "Professor":
+            div_professor.style.display = "block"
+            div_administrador.style.display = "none"
+            break;
     
-    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
-
-    const hashArray = Array.from(new Uint8Array(hashBuffer));
-    const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-
-    return hashHex;
+        case "Administrador":
+            div_professor.style.display = "none"
+            div_administrador.style.display = "block"
+            break;
+        case "null":
+            div_professor.style.display = "none"
+            div_administrador.style.display = "none"
+            break
+    }
 }

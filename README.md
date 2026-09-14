@@ -1,4 +1,4 @@
-# Projeto Escola (nome indefinido)
+# Franz 
 ## Problematica
 
 ## Instalação
@@ -26,6 +26,14 @@
 	- [x] Adicionar chaves principais
 	- [ ] Adicionar chaves estrangeiras
 	- [ ] Adicionar no banco de dados
+- [ ] Frontend
+	- [ ] Adicionar CRUD de Alunos
+	- [ ] Adicionar CRUD de Professores
+	- [ ] Adicionar CRUD de Turmas
+	- [ ] Adicionar CRUD de Atividades
+	- [ ] Adicionar CRUD de Disciplinas
+	- [ ] Adicionar CRUD de Pessoas
+	- [ ] Adicionar CRUD de Administradores
 - [x] Adicionar Controllers
 - [ ] Refatorar codigo
 

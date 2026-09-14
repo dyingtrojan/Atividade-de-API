@@ -29,7 +29,7 @@ namespace Atividade_API.Controllers
           {
               return NotFound();
           }
-            return await _context.Turma.ToListAsync();
+            return await _context.Turma.Include(a => a.Disciplinas).ToListAsync();
         }
 
         // GET: api/Turmas/5
@@ -90,8 +90,19 @@ namespace Atividade_API.Controllers
           {
               return Problem("Entity set 'AppDbContext.Turma'  is null.");
           }
-            _context.Turma.Add(turma);
-            await _context.SaveChangesAsync();
+          if (turma.Disciplinas != null && turma.Disciplinas.Any())
+    {
+        // Extrai apenas os IDs enviados pelo Front-end
+        var disciplinasIds = turma.Disciplinas.Select(d => d.Id).ToList();
+
+        // Busca as disciplinas reais cadastradas no Banco de Dados
+        var disciplinasDoBanco = await _context.Disciplina
+            .Where(d => disciplinasIds.Contains(d.Id))
+            .ToListAsync();
+
+        // Substitui a lista recebida pelas entidades rastreadas pelo Entity Framework
+        turma.Disciplinas = disciplinasDoBanco;
+    }
 
             return CreatedAtAction("GetTurma", new { id = turma.Id }, turma);
         }

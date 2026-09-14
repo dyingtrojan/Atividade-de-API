@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pessoas</title>
+    <link rel="stylesheet" href="../../css/site.css">
+    <script src="../../js/api/turma.js" defer></script>
+</head>
+<body onload="alterarTabela(); procurarDisciplinas()">
+    <header>
+        <button onclick="javascript:history.back()">← Voltar</button>
+    </header>
+    <br>
+    <main>
+        <div>
+            <h1>Adicionar Turma</h1>
+            <label for="nomeTurma">Nome da turma</label>
+            <input type="text" name="nomeTurma" id="nomeTurma">
+            <br>
+            <label for="anoLetivo">Ano Letivo</label>
+            <input type="number" name="anoLetivo" id="anoLetivo">
+            <br>
+            <label for="turno">Turno</label>
+            <input type="text" name="turno" id="turno">
+            <br>
+            <label for="disciplina">Disciplinas</label>
+            <select name="disciplina" id="disciplina" multiple size="50">
+            </select>
+            <br>
+            <button class="cadastrar" onclick="adicionarTurma()">Adicionar</button>
+        </div>
+        <br>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome da turma</th>
+                        <th>Ano Letivo</th>
+                        <th>Turno</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="tabela-turmas">
+    
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+</html>

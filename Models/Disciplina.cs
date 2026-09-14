@@ -3,9 +3,9 @@
     public class Disciplina
     {
         public int Id { get; set; }
-        public string nomeDisciplina { get; set; }
-        public int CargaHoraria { get; set; }
+        public string? nomeDisciplina { get; set; }
+        public int? CargaHoraria { get; set; }
 
-        public ICollection<Turma> Turmas { get; set; } = new List<Turma>();
+        public ICollection<Turma>? Turmas { get; set; } = new List<Turma>();
     }
 }
