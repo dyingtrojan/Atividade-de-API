@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criação de conta</title>
+    <link rel="stylesheet" href="../../css/site.css">
+    <script src="/js/api/pessoa.js" defer></script>
+</head>
+<body>
+    <header>
+        <button onclick="javascript:history.back()">← Voltar</button>
+    </header>
+    <main>
+        <div class="center login pessoa">
+            <h1>Adicione o usuário</h1>
+            <div style="border: none;">
+                <label for="nome">Nome</label>
+                <input type="text" name="nome" id="nome">
+                <br>
+                <label for="idade">Idade</label>
+                <input type="number" name="idade" id="idade">
+                <br>
+                <label for="cpf">CPF</label>
+                <input type="text" name="cpf" id="cpf">
+                <br>
+                <label for="email">E-mail</label>
+                <input type="email" name="email" id="email">
+                <br>
+                <label for="senha">Senha</label>
+                <input type="password" name="senha" id="senha">
+                <br>
+                <label for="tipoUsuario">Tipo de Usuario</label>
+                <select name="tipoUsuario" id="tipoUsuario">
+                    <option value="null" disabled selected>Selecione o tipo do usuario.</option>
+                    <option value="Professor">Professor</option>
+                    <option value="Administrativo">Administrativo</option>
+                </select>
+                <br>
+                <button class="cadastrar" id="cadastrar" onclick="adicionarPessoa()">Cadastrar</button>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

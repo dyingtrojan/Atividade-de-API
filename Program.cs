@@ -1,4 +1,9 @@
 using Microsoft.EntityFrameworkCore;
+<<<<<<< Updated upstream
+=======
+using System.Text.Json.Serialization;
+using Atividade_API.Data;
+>>>>>>> Stashed changes
 
 
 using Atividade_API.Data;
@@ -12,10 +17,19 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString)); // Or UseNpgsql / UseSqlite depending on your database provider
 
 
+<<<<<<< Updated upstream
 // Add services to the container.
 builder.Services.AddControllers();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+=======
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+    });
+
+>>>>>>> Stashed changes
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
